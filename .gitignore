@@ -12,3 +12,6 @@
 .bloop
 .metals
 
+# I'm going to put my own personal market opprotunities in code here
+src/main/scala/personal
+
