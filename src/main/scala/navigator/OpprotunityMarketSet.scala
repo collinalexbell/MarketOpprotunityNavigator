@@ -19,18 +19,22 @@ case class Application(
 )
 
 // Design Pattern: Composite
-case class CustomerGrouping(
-    description: String,
-    subGroupings: List[CustomerGrouping] = List.empty[CustomerGrouping]
+class CustomerGrouping(
+    val description: String,
+    val level: Int
 ) {
-  def addSubGrouping(subGrouping: CustomerGrouping) =
-    subGrouping :: subGroupings
+  var subGroupings: List[CustomerGrouping] = List.empty[CustomerGrouping]
+  def addSubGrouping(description: String): CustomerGrouping = {
+    val rv = new CustomerGrouping(description, level + 1)
+    subGroupings = rv :: subGroupings
+    rv
+  }
 }
 
 // All CustomerGroupings will be branches of the RootCustomer tree
 // This is because CustomerGroupings must be compared on the same level of abstraction
 // In order to compute levels of abstraction, groupings need a common root
-object RootCustomer extends CustomerGrouping(description, subGroupings) {}
+object RootCustomer extends CustomerGrouping("root", 0) {}
 
 case class MarketOpprotunity(
     application: Application,
