@@ -22,20 +22,23 @@ case class Application(
 class CustomerGrouping(
     val description: String,
     val level: Int,
-    val parent: CustomerGrouping = RootCustomer
+    _parent: Option[CustomerGrouping] = None
 ) {
   var subGroupings: List[CustomerGrouping] = List.empty[CustomerGrouping]
   def addSubGrouping(description: String): CustomerGrouping = {
-    val rv = new CustomerGrouping(description, level + 1, this)
+    val rv = new CustomerGrouping(description, level + 1, Some(this))
     subGroupings = rv :: subGroupings
     rv
   }
+  def parent: CustomerGrouping = _parent.getOrElse(RootCustomer)
 }
 
 // All CustomerGroupings will be branches of the RootCustomer tree
 // This is because CustomerGroupings must be compared on the same level of abstraction
 // In order to compute levels of abstraction, groupings need a common root
-object RootCustomer extends CustomerGrouping("root", 0) {}
+object RootCustomer extends CustomerGrouping("root", 0) {
+  override val parent: CustomerGrouping = this
+}
 
 case class MarketOpprotunity(
     application: Application,

@@ -22,4 +22,8 @@ class OpprotunityMarketSetTest extends AnyFlatSpec with should.Matchers {
     val customer = RootCustomer.addSubGrouping(" a subgrouping of customer")
     customer.parent should be(RootCustomer)
   }
+
+  "The RootCustomer's parent" should "be itself" in {
+    RootCustomer.parent should be(RootCustomer)
+  }
 }
