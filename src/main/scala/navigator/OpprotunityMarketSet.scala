@@ -19,6 +19,7 @@ case class Application(
 )
 
 // Design Pattern: Composite
+// TODO: Extract out the Composite functionality so this is uncluttered
 class CustomerGrouping(
     val description: String,
     val level: Int,
