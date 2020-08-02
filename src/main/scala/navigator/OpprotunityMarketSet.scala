@@ -45,3 +45,9 @@ case class MarketOpprotunity(
     application: Application,
     customerGrouping: CustomerGrouping
 )
+
+//TODO: Initial Screen
+// Do the customer need exist?
+// Can we really satisfy the customer need using our unique abilities, and better than existing solutions?
+// Are there severe restrictions that would hunder us from executing on this market opprotunity?
+// Will this opprotunity be in conflict with any of our core values?
