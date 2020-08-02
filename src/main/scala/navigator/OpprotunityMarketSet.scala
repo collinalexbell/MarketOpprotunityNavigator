@@ -1,5 +1,11 @@
 package navigator
 
+case class Agent(
+    currentAbilities: List[Ability],
+    developingAbilities: List[Ability],
+    plannedAbilities: List[Ability]
+)
+
 case class Ability(
     name: String,
     functions: List[String],
