@@ -1,5 +1,7 @@
 package navigator
 
+import scala.collection.mutable.HashSet
+
 case class Agent(
     currentAbilities: List[Ability],
     developingAbilities: List[Ability],
@@ -51,3 +53,8 @@ case class MarketOpprotunity(
 // Can we really satisfy the customer need using our unique abilities, and better than existing solutions?
 // Are there severe restrictions that would hunder us from executing on this market opprotunity?
 // Will this opprotunity be in conflict with any of our core values?
+
+object OpprotunityMarketSet {
+  val current = HashSet[MarketOpprotunity]()
+  val considerations = HashSet[MarketOpprotunity]()
+}
