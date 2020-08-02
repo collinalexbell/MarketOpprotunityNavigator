@@ -21,11 +21,12 @@ case class Application(
 // Design Pattern: Composite
 class CustomerGrouping(
     val description: String,
-    val level: Int
+    val level: Int,
+    val parent: CustomerGrouping = RootCustomer
 ) {
   var subGroupings: List[CustomerGrouping] = List.empty[CustomerGrouping]
   def addSubGrouping(description: String): CustomerGrouping = {
-    val rv = new CustomerGrouping(description, level + 1)
+    val rv = new CustomerGrouping(description, level + 1, this)
     subGroupings = rv :: subGroupings
     rv
   }
