@@ -22,7 +22,15 @@ case class Application(
 case class CustomerGrouping(
     description: String,
     subGroupings: List[CustomerGrouping] = List.empty[CustomerGrouping]
-)
+) {
+  def addSubGrouping(subGrouping: CustomerGrouping) =
+    subGrouping :: subGroupings
+}
+
+// All CustomerGroupings will be branches of the RootCustomer tree
+// This is because CustomerGroupings must be compared on the same level of abstraction
+// In order to compute levels of abstraction, groupings need a common root
+object RootCustomer extends CustomerGrouping(description, subGroupings) {}
 
 case class MarketOpprotunity(
     application: Application,
