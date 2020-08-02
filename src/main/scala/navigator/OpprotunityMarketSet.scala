@@ -55,6 +55,7 @@ case class MarketOpprotunity(
 // Will this opprotunity be in conflict with any of our core values?
 
 object OpprotunityMarketSet {
+  // Should be 3 - 5 `MarketOpprotunity`s in the current set
   val current = HashSet[MarketOpprotunity]()
   val considerations = HashSet[MarketOpprotunity]()
 }
