@@ -18,8 +18,10 @@ case class Application(
     abilitiesRequired: List[Ability]
 )
 
+// Design Pattern: Composite
 case class CustomerGrouping(
-    description: String
+    description: String,
+    subGroupings: List[CustomerGrouping] = List.empty[CustomerGrouping]
 )
 
 case class MarketOpprotunity(
